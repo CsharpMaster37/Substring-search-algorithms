@@ -8,6 +8,6 @@ namespace ISubstringSearchInterface
 {
     public interface ISubstringSearch
     {
-        List<int> IndexesOf(string pattern, string text);
+        List<int> IndexesOf(string text, string pattern);
     }
 }

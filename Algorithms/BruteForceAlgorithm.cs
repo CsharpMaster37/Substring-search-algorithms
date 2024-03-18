@@ -9,7 +9,7 @@ namespace Algorithms
 {
     public class BruteForceAlgorithm : ISubstringSearch
     {
-        public List<int> IndexesOf(string pattern, string text)
+        public List<int> IndexesOf(string text, string pattern)
         {
             int n = text.Length;
             int m = pattern.Length;

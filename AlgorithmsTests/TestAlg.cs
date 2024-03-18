@@ -28,7 +28,7 @@ namespace AlgorithmsTests
             var expected = Enumerable.Range(0, 9).ToList();
             foreach (var algm in algms)
             {
-                var actual = algm.IndexesOf(pattern, text);
+                var actual = algm.IndexesOf(text, pattern);
                 CollectionAssert.AreEqual(expected, actual);
             }
         }
@@ -60,10 +60,10 @@ namespace AlgorithmsTests
             foreach (var pattern in bag)
             {
                 var BF = new BruteForceAlgorithm();
-                var expected = BF.IndexesOf(pattern, text);
+                var expected = BF.IndexesOf(text, pattern);
                 foreach (var algm in algms)
                 {
-                    var actual = algm.IndexesOf(pattern, text);
+                    var actual = algm.IndexesOf(text, pattern);
                     CollectionAssert.AreEqual(expected, actual);
                 }
             }

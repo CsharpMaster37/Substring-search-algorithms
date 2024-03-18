@@ -13,10 +13,10 @@ namespace AlgorithmsRealize
     {
         static void Main(string[] args)
         {
-            ISubstringSearch brutforce = new BruteForceAlgorithm();
-            string pattern = "aa";
-            string text = "aaaaaaaaaa";
-            foreach (var item in brutforce.IndexesOf(pattern, text))
+            ISubstringSearch rabin = new RabinKarpAlgorithm();
+            string pattern = "}}";
+            string text = "DW}}FW}}}}DAWD}}";
+            foreach (var item in rabin.IndexesOf(text, pattern))
             {
                 Console.Write(item + " ");
             }
