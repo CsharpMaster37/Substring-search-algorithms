@@ -14,8 +14,8 @@ namespace AlgorithmsRealize
         static void Main(string[] args)
         {
             ISubstringSearch rabin = new RabinKarpAlgorithm();
-            string pattern = "}}";
-            string text = "DW}}FW}}}}DAWD}}";
+            string pattern = "aa";
+            string text = "aaaaaaaaaa";
             foreach (var item in rabin.IndexesOf(text, pattern))
             {
                 Console.Write(item + " ");
