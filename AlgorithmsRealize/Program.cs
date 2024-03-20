@@ -13,10 +13,10 @@ namespace AlgorithmsRealize
     {
         static void Main(string[] args)
         {
-            ISubstringSearch rabin = new RabinKarpAlgorithm();
+            ISubstringSearch alg = new KMPAlgorithm();
             string pattern = "aa";
             string text = "aaaaaaaaaa";
-            foreach (var item in rabin.IndexesOf(text, pattern))
+            foreach (var item in alg.IndexesOf(text, pattern))
             {
                 Console.Write(item + " ");
             }
