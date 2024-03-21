@@ -9,24 +9,47 @@ namespace Algorithms
         public List<int> IndexesOf(string text, string pattern)
         {
             List<int> result = new List<int>();
-            int n = text.Length, m = pattern.Length;
-            ulong d = 128, q = 999983;
-            ulong p = 0, ts = 0;
-            ulong h = (ulong)Math.Pow(d, m - 1);
+            int n = text.Length;
+            int m = pattern.Length;
+            int h = 1;
+            int d = 128;
+            int q = 33554432;
+            for (int i = 0; i < m - 1; i++)
+            {
+                h = (h * d) % q;
+            }
+            int p = 0;
+            int ts = 0;
             for (int i = 0; i < m; i++)
             {
-                p = (p * d + pattern[i]) % q;
-                ts = (ts * d + text[i]) % q;
+                p = (d * p + pattern[i]) % q;
+                ts = (d * ts + text[i]) % q;
             }
-            for (int i = 0; i < n - m + 1; i++)
+            for (int s = 0; s <= n - m; s++)
             {
-                if (p == ts && text.Substring(i, m) == pattern)
+                if (p == ts)
                 {
-                    result.Add(i);
+                    bool match = true;
+                    for (int i = 0; i < m; i++)
+                    {
+                        if (pattern[i] != text[s + i])
+                        {
+                            match = false;
+                            break;
+                        }
+                    }
+                    if (match)
+                    {
+                        result.Add(s);
+                    }
                 }
-                if(i<n-m)
+                if (s < n - m)
                 {
-                    ts = (d * (ts - text[i] * h) + text[i + m]) % q;
+                    ts = (d * (ts - text[s] * h) + text[s + m]) % q;
+                    if (ts < 0)
+                    {
+                        ts = ts + q;
+                    }
                 }
             }
             return result;
